@@ -1,5 +1,6 @@
 package io.github.stewilondanga.outandabout;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,14 +21,16 @@ public class MainActivity extends AppCompatActivity {
         mFindExploreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Out and about", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, EventActivity.class);
+                startActivity(intent);
             }
         });
 
         mFindAboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Explore the world", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
             }
         });
     }
