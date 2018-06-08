@@ -43,11 +43,12 @@
         android:text="About"/>
 
     <EditText
-        android:layout_width="250dp"
-        android:layout_height="60dp"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:textColor="@color/accent"
         android:background="@color/primary_light"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_above="@id/mainbutton1"
         android:hint="Explore"
         android:id="@+id/mainedittext"/>
 

@@ -1,16 +1,19 @@
 package io.github.stewilondanga.outandabout;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
 public class EventActivity extends AppCompatActivity {
-    private Button mFindExploreButton;
+    public TextView mEventTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
+        Intent intent = getIntent();
+        String location = intent.getStringExtra("location");
+        mEventTextView.setText("Out and about around: " + location);
     }
 }
