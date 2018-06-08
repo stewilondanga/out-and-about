@@ -24,7 +24,7 @@
 
     <Button
         android:id="@+id/mainbutton1"
-        android:layout_width="200dp"
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
         android:background="@color/primary_light"
         android:textColor="@color/primary_dark"
@@ -34,7 +34,7 @@
 
     <Button
         android:id="@+id/mainbutton2"
-        android:layout_width="200dp"
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
         android:background="@color/primary_light"
         android:textColor="@color/primary_dark"
