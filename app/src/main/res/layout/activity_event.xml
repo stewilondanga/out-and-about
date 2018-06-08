@@ -6,13 +6,15 @@
     android:layout_height="match_parent"
     tools:context="io.github.stewilondanga.outandabout.EventActivity">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/locationEditText"/>
-
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/eventTextView"/>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventListView"/>
+
 
 </RelativeLayout>

@@ -13,14 +13,14 @@
         android:src="@drawable/event" />
 
     <TextView
+        android:id="@+id/mainTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:fontFamily="cursive"
-        android:text="out and about"
+        android:text="Out and About"
         android:textColor="@color/accent"
-        android:textSize="68sp" />
+        android:textSize="50sp" />
 
     <Button
         android:id="@+id/mainbutton1"
@@ -50,6 +50,6 @@
         android:background="@color/primary_light"
         android:layout_above="@id/mainbutton1"
         android:hint="Explore"
-        android:id="@+id/mainedittext"/>
+        android:id="@+id/locationEditText"/>
 
 </RelativeLayout>
