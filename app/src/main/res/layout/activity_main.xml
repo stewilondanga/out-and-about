@@ -23,12 +23,21 @@
         android:textSize="68sp" />
 
     <Button
-        android:id="@+id/mainbutton"
-        android:layout_width="match_parent"
+        android:id="@+id/mainbutton1"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_light"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
         android:text="Explore" />
+
+    <Button
+        android:id="@+id/mainbutton2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="About"/>
 
 </RelativeLayout>
