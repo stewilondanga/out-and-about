@@ -2,6 +2,8 @@ package io.github.stewilondanga.outandabout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class AboutActivity extends AppCompatActivity {
 
