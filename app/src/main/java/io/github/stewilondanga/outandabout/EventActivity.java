@@ -25,6 +25,10 @@ public class EventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event);
         ButterKnife.bind(this);
 
+        Intent intent = getIntent();
+        String location = intent.getStringExtra("location");
+        mLocationTextView.setText("Out and About: " + location);
+
         mListView = (ListView) findViewById(R.id.eventListView);
         mLocationTextView = (TextView) findViewById(R.id.eventTextView);
 
