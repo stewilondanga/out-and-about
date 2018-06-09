@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
         mFindExploreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                   String location = mLocationEditText.getText().toString();
+                   String Places = mLocationEditText.getText().toString();
                    Intent intent = new Intent(MainActivity.this, EventActivity.class);
-                   intent.putExtra("location", location);
+                   intent.putExtra("location", Places);
                    startActivity(intent);
             }
         });
