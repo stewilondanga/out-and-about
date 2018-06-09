@@ -8,8 +8,21 @@
 
     <ImageView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scaleType="centerCrop"
+    android:layout_height="wrap_content"
+    android:paddingTop="50dp"
     android:src="@drawable/event"/>
+
+    <ListView
+        android:id="@+id/aboutListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+    <TextView
+        android:id="@+id/aboutTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/aboutListView"
+        android:textColor="@color/accent"/>
 
 </RelativeLayout>

@@ -29,9 +29,6 @@ public class EventActivity extends AppCompatActivity {
         String location = intent.getStringExtra("location");
         mLocationTextView.setText("Out and About: " + location);
 
-        mListView = (ListView) findViewById(R.id.eventListView);
-        mLocationTextView = (TextView) findViewById(R.id.eventTextView);
-
         OutAndAboutArrayAdapter adapter = new OutAndAboutArrayAdapter(this, android.R.layout.simple_list_item_1, Places, event);
         mListView.setAdapter(adapter);
 
