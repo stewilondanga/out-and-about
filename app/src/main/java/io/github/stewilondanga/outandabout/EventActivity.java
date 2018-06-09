@@ -34,12 +34,12 @@ public class EventActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int I, long l) {
                 String restaurant = ((TextView)view).getText().toString();
-                Toast.makeText(EventActivity.this, Place, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(EventActivity.this, Places Toast.LENGTH_SHORT).show();
             }
         });
 
-        Intent intent = getIntent();
-        String location = intent.getStringExtra("location");
-        mLocationTextView.setText("This is it: " + location);
+        //Intent intent = getIntent();
+        //String location = intent.getStringExtra("location");
+        //mLocationTextView.setText("This is it: " + location);
     }
 }
