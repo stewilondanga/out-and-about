@@ -16,13 +16,19 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".EventActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="io.github.stewilondanga.outandabout.MainActivity">
+        </meta-data>
+        </activity>
+        <activity android:name=".AboutActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="io.github.stewilondanga.outandabout.MainActivity">
             </meta-data>
         </activity>
-        <activity android:name=".EventActivity" />
-        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>
