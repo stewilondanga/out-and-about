@@ -16,8 +16,8 @@ public class EventActivity extends AppCompatActivity {
     @BindView(R.id.eventTextView) TextView mLocationTextView;
     @BindView(R.id.eventListView) ListView mListView;
 
-    private String[] Places = new String[] {"Nairobi", "Kampala", "Dodoma", "Kigali", "Cairo", "Durban", "Abuja"};
-    private String[] event = new String[] {"Concert", "Festivity", "Rally", "Wedding", "Demonstration", "Dolphin count", "Auditions"};
+    private String[] Places = new String[] {"Nairobi", "Kampala", "Dodoma", "Kigali", "Cairo", "Durban", "Abuja", "Tunis", "Dakar"};
+    private String[] event = new String[] {"Concert", "Festivity", "Rally", "Wedding", "Demonstration", "Dolphin count", "Auditions", "National holiday", "Memorial"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
