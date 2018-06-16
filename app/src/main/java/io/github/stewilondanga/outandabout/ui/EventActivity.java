@@ -1,21 +1,18 @@
-package io.github.stewilondanga.outandabout;
+package io.github.stewilondanga.outandabout.ui;
 
-import android.app.LauncherActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Window;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView;
-import android.view.View;
 
 import java.io.IOException;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.stewilondanga.outandabout.R;
+import io.github.stewilondanga.outandabout.services.MeetupService;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;

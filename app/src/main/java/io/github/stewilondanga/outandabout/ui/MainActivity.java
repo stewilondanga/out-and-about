@@ -1,4 +1,4 @@
-package io.github.stewilondanga.outandabout;
+package io.github.stewilondanga.outandabout.ui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.stewilondanga.outandabout.R;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.mainbutton1) Button mFindExploreButton;

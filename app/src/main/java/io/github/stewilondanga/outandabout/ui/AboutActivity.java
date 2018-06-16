@@ -1,4 +1,4 @@
-package io.github.stewilondanga.outandabout;
+package io.github.stewilondanga.outandabout.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 import android.graphics.Typeface;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.stewilondanga.outandabout.R;
 
 public class AboutActivity extends AppCompatActivity {
     @BindView(R.id.aboutListView) ListView mListView;

@@ -1,4 +1,4 @@
-package io.github.stewilondanga.outandabout;
+package io.github.stewilondanga.outandabout.services;
 
 import android.app.LauncherActivity;
 import android.provider.CalendarContract;
