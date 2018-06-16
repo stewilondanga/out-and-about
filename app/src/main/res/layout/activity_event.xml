@@ -6,21 +6,8 @@
     android:layout_height="match_parent"
     tools:context="io.github.stewilondanga.outandabout.ui.EventActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/eventTextView"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/primary_dark" />
-
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/eventListView"
-        android:layout_below="@+id/eventTextView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
-
-
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"/>
 </RelativeLayout>
