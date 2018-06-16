@@ -1,23 +1,33 @@
 package io.github.stewilondanga.outandabout;
 
+import android.app.LauncherActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView;
 import android.view.View;
+
+import java.io.IOException;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 
 public class EventActivity extends AppCompatActivity {
+    public static final String TAG = EventActivity.class.getSimpleName();
     @BindView(R.id.eventTextView) TextView mLocationTextView;
     @BindView(R.id.eventListView) ListView mListView;
 
-    private String[] Places = new String[] {"Nairobi", "Kampala", "Dodoma", "Kigali", "Cairo", "Durban", "Abuja", "Tunis", "Dakar"};
-    private String[] event = new String[] {"Concert", "Festivity", "Rally", "Wedding", "Demonstration", "Dolphin count", "Auditions", "National holiday", "Memorial"};
+    private OutAndAboutListAdapter mAdapter;
+    private List<events> mEvents = newArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,19 +37,31 @@ public class EventActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
-        mLocationTextView.setText("Out and About: " + location);
+        getListItem(events);
+    }
 
-        OutAndAboutArrayAdapter adapter = new OutAndAboutArrayAdapter(this, android.R.layout.simple_list_item_1, Places, event);
-        mListView.setAdapter(adapter);
-
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    private void getListItem(String event) {
+        final MeetupService meetupService = new MeetupService();
+        meetupService.findListItem(event, new Callback() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int I, long l) {
-                String restaurant = ((TextView)view).getText().toString();
-                Toast.makeText(EventActivity.this, "location", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+            @Override
+            public void onResponse(Call call, Response response){
+                mEvents = MeetupService.processResults(response);
+
+                EventActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter = new OutAndAboutListAdapter(getApplicationContext(), mEvents);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(newActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
+                    }
+                });
             }
         });
-
-
     }
 }
