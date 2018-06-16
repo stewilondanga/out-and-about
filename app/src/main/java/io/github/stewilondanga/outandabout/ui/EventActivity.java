@@ -3,15 +3,18 @@ package io.github.stewilondanga.outandabout.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.util.List;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.stewilondanga.outandabout.R;
+import io.github.stewilondanga.outandabout.adapters.OutAndAboutListAdapter;
 import io.github.stewilondanga.outandabout.services.MeetupService;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -51,7 +54,7 @@ public class EventActivity extends AppCompatActivity {
                 EventActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mAdapter = new OutAndAboutListAdapter(getApplicationContext(), mEvents);
+                        mAdapter = new OutAndAboutListAdapter(getApplicationContext(), events);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(newActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
