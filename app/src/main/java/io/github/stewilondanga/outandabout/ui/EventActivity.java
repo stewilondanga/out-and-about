@@ -27,7 +27,7 @@ public class EventActivity extends AppCompatActivity {
     @BindView(R.id.eventListView) ListView mListView;
 
     private OutAndAboutListAdapter mAdapter;
-    private List<events> mEvents = newArrayList<>();
+    private List<events> mEvents = newArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
