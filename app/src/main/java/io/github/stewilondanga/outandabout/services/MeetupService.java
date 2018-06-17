@@ -46,7 +46,7 @@ public class MeetupService {
         call.enqueue(callback);
     }
 
-    public List<events> processResults(Response response) {
+    public static List<events> processResults(Response response) {
         List<events> Events = new ArrayList<>();
 
             try {

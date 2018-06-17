@@ -2,7 +2,6 @@ package io.github.stewilondanga.outandabout.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.EventLog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,16 +28,16 @@ public class OutAndAboutListAdapter extends RecyclerView.Adapter<OutAndAboutList
 
         public OutAndAboutListAdapter(Context context, List<Events>) {
             mContext = context;
-            mEvents = Events;
+            mEvents = events;
         }
 
         public void bindAppName(Events events){
-            Picasso.with(mContext).load(OutAndAbout.getImageUrl()).into(mOutAndAboutImageView)
+            Picasso.with(mContext).load(Events.getImageUrl()).into(mEventsImageView)
         }
 
         @Override
         public OutAndAboutListAdapter.OutAndAboutViewHolder onCreateViewHolder(ViewGroup parent, int viewType ) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_list_item, parent, false);
             return viewHolder;
         }
 

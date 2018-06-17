@@ -25,32 +25,33 @@ import okhttp3.Response;
 
 public class EventListActivity extends AppCompatActivity {
     public static final String TAG = EventListActivity.class.getSimpleName();
-    @BindView(R.id.itemNameTextView) TextView mLocationTextView;
-    @BindView(R.id.eventListView) ListView mListView;
-
+    @BindView(R.id.recyclerView) ListView mRecyclerView;
     private OutAndAboutListAdapter mAdapter;
-    private List<Events> mEvents = newArrayList<>();
+
+    public List<Events> mEvents = newArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event);
+        setContentView(R.layout.activity_out_and_about_detail);
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        String location = intent.getStringExtra("location");
+        String event = intent.getStringExtra("event_list_item");
+
         getListItem(Events);
     }
 
     private void getListItem(String event) {
-        final MeetupService meetupService = new MeetupService();
-        meetupService.findListItem(event, new Callback() {
+        final MeetupService meetupService =new MeetupService();
+        meetupService.findEvents(event, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
             }
+
             @Override
-            public void onResponse(Call call, Response response){
+            public void onResponse(Call call, Response response) throws IOException {
                 mEvents = MeetupService.processResults(response);
 
                 EventListActivity.this.runOnUiThread(new Runnable() {
@@ -58,7 +59,7 @@ public class EventListActivity extends AppCompatActivity {
                     public void run() {
                         mAdapter = new OutAndAboutListAdapter(getApplicationContext(), Events);
                         mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(newActivity.this);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(EventListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                     }
@@ -66,4 +67,6 @@ public class EventListActivity extends AppCompatActivity {
             }
         });
     }
+
 }
+

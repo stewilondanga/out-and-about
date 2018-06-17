@@ -39,7 +39,7 @@ public class AboutActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String About = intent.getStringExtra("About");
-        mTextView.setText("Your regular event Catalogue");
+        mTextView.setText("Your regular event_list_item Catalogue");
 
         Typeface CaviarDreams = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
         mTextView.setTypeface(CaviarDreams);
