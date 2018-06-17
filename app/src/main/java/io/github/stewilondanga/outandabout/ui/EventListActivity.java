@@ -9,25 +9,27 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.List;
 
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.stewilondanga.outandabout.R;
 import io.github.stewilondanga.outandabout.adapters.OutAndAboutListAdapter;
+import io.github.stewilondanga.outandabout.models.Events;
 import io.github.stewilondanga.outandabout.services.MeetupService;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
 
-public class EventActivity extends AppCompatActivity {
-    public static final String TAG = EventActivity.class.getSimpleName();
-    @BindView(R.id.eventTextView) TextView mLocationTextView;
+public class EventListActivity extends AppCompatActivity {
+    public static final String TAG = EventListActivity.class.getSimpleName();
+    @BindView(R.id.itemNameTextView) TextView mLocationTextView;
     @BindView(R.id.eventListView) ListView mListView;
 
     private OutAndAboutListAdapter mAdapter;
-    private List<events> mEvents = newArrayList;
+    private List<Events> mEvents = newArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class EventActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
-        getListItem(events);
+        getListItem(Events);
     }
 
     private void getListItem(String event) {
@@ -51,10 +53,10 @@ public class EventActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response){
                 mEvents = MeetupService.processResults(response);
 
-                EventActivity.this.runOnUiThread(new Runnable() {
+                EventListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mAdapter = new OutAndAboutListAdapter(getApplicationContext(), events);
+                        mAdapter = new OutAndAboutListAdapter(getApplicationContext(), Events);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(newActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);

@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                    String Places = mLocationEditText.getText().toString();
-                   Intent intent = new Intent(MainActivity.this, EventActivity.class);
+                   Intent intent = new Intent(MainActivity.this, EventListActivity.class);
                    intent.putExtra("location", Places);
                    startActivity(intent);
             }
