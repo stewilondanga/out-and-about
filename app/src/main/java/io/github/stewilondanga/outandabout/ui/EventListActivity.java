@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ListView;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import okhttp3.Response;
 
 
 public class EventListActivity extends AppCompatActivity {
-    public static final String TAG = EventListActivity.class.getSimpleName();
+    //public static final String TAG = EventListActivity.class.getSimpleName();
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private OutAndAboutListAdapter mAdapter;
 
@@ -32,7 +32,7 @@ public class EventListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_out_and_about_detail);
+        setContentView(R.layout.activity_event);
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
