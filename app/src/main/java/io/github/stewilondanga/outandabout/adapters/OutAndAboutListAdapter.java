@@ -16,58 +16,54 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.stewilondanga.outandabout.R;
+import io.github.stewilondanga.outandabout.models.City;
 import io.github.stewilondanga.outandabout.models.Events;
 
 /**
  * Created by stewart on 6/17/18.
  */
 
-public class OutAndAboutListAdapter extends RecyclerView.Adapter<OutAndAboutListAdapter.OutAndAboutViewHolder> {
-        private List<Events> mEvents = new ArrayList<>();
+public class OutAndAboutListAdapter extends RecyclerView.Adapter<OutAndAboutListAdapter.EventViewHolder> {
+    private List<Events> mEvents = new ArrayList<>();
+    private Context mContext;
+
+    public OutAndAboutListAdapter(Context context, Events<event>){
+        mContext = context;
+        mEvents = Events;
+    }
+
+    @Override
+    public OutAndAboutListAdapter.EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_list_item, parent, false);
+        return Events;
+    }
+
+    @Override
+    public void onBindViewHolder(OutAndAboutListAdapter.EventViewHolder holder, int position) {
+        holder.bindEvents(mEvents.get(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return mEvents.size();
+    }
+    public void bindEvent (Events event){
+    }
+
+    public class EventViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.itemImageView) ImageView mOutAndAboutImageView;
+        @BindView(R.id.categoryTextView) TextView mCategoryTextView;
         private Context mContext;
 
-        public OutAndAboutListAdapter(Context context, List<Events>) {
-            mContext = context;
-            mEvents = events;
-        }
-
-        public void bindAppName(Events events){
-            Picasso.with(mContext).load(Events.getImageUrl()).into(mEventsImageView)
-        }
-
-        @Override
-        public OutAndAboutListAdapter.OutAndAboutViewHolder onCreateViewHolder(ViewGroup parent, int viewType ) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_list_item, parent, false);
-            return viewHolder;
-        }
-
-        @Override
-        public void onBindViewHolder(OutAndAboutListAdapter.OutAndAboutViewHolder holder, int position) {
-            holder.bindevents(mEvents.get(position));
-        }
-
-        @Override
-        public int getItemCount() {
-            return mEvents.size();
-        }
-
-        public class OutAndAboutViewHolder extends RecyclerView.ViewHolder {
-            @BindView(R.id.itemImageView) ImageView mOutAndAboutImageView;
-            @BindView(R.id.itemNameTextView) TextView mOutAndAboutTextView;
-            @BindView(R.id.categoryTextView)TextView mCategoryTextView;
-            @BindView(R.id.ratingTextView)TextView mRatingTextView;
-            private Context mContext;
-
-            public OutAndAboutViewHolder(View itemView) {
+            public EventViewHolder(View itemView) {
                 super(itemView);
                 ButterKnife.bind(this, itemView);
                 mContext = itemView.getContext();
             }
 
-            public void bindevents(events events) {
-                mOutAndAboutTextView.setText(events.getName());
-                mCategoryTextView.setText(events.getCategories().get(0).getTitle());
-                mRatingTextView.setText("Rating: " + events.getRating() + "/5");
+            public void bindEvents(Events event) {
+                mCategoryTextView.setText(event.getCity().describeContents());
             }
-        }
+    }
 }
+

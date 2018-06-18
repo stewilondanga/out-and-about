@@ -1,11 +1,9 @@
 package io.github.stewilondanga.outandabout.services;
 
 import android.app.LauncherActivity;
-import android.provider.CalendarContract;
 
-import javax.security.auth.callback.Callback;
 import io.github.stewilondanga.outandabout.Constants;
-import io.github.stewilondanga.outandabout.models.Event;
+import io.github.stewilondanga.outandabout.models.Events;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -46,8 +44,8 @@ public class MeetupService {
         call.enqueue(callback);
     }
 
-    public static List<events> processResults(Response response) {
-        List<events> Events = new ArrayList<>();
+    public static List<Events> processResults(Response response) {
+        List<Events> events = new ArrayList<>();
 
             try {
                 String jsonData = response.body().string();
@@ -59,11 +57,11 @@ public class MeetupService {
 
                     Type collectionType = new TypeToken<List<LauncherActivity.ListItem>> () {}.getType();
                     Gson gson = new GsonBuilder().create();
-                    LauncherActivity.ListItem = gson.fromJson(eventsJSON.toString(), collectionType);
+                    events = gson.fromJson(eventsJSON.toString(), collectionType);
                 }
             } catch (JSONException | NullPointerException | IOException e) {
                 e.printStackTrace();
             }
-                return LauncherActivity.ListItem;
+                return events;
     }
 }

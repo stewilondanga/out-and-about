@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -28,7 +29,7 @@ public class EventListActivity extends AppCompatActivity {
     @BindView(R.id.recyclerView) ListView mRecyclerView;
     private OutAndAboutListAdapter mAdapter;
 
-    public List<Events> mEvents = newArrayList<>();
+    private List<Events> mEvents = new ArrayList<Events>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -39,7 +40,7 @@ public class EventListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String event = intent.getStringExtra("event_list_item");
 
-        getListItem(Events);
+        getListItem(event);
     }
 
     private void getListItem(String event) {
@@ -57,7 +58,7 @@ public class EventListActivity extends AppCompatActivity {
                 EventListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mAdapter = new OutAndAboutListAdapter(getApplicationContext(), Events);
+                        mAdapter = new OutAndAboutListAdapter(getApplicationContext(), events);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(EventListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
