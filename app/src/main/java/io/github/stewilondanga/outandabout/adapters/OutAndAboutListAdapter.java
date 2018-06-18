@@ -27,15 +27,16 @@ public class OutAndAboutListAdapter extends RecyclerView.Adapter<OutAndAboutList
     private List<Events> mEvents = new ArrayList<>();
     private Context mContext;
 
-    public OutAndAboutListAdapter(Context context, Events<event>){
+    public OutAndAboutListAdapter(Context context, ArrayList<Events> events){
         mContext = context;
-        mEvents = Events;
+        mEvents = events;
     }
 
     @Override
     public OutAndAboutListAdapter.EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_list_item, parent, false);
-        return Events;
+        EventViewHolder viewHolder = new EventViewHolder(view);
+        return viewHolder;
     }
 
     @Override
@@ -47,8 +48,7 @@ public class OutAndAboutListAdapter extends RecyclerView.Adapter<OutAndAboutList
     public int getItemCount() {
         return mEvents.size();
     }
-    public void bindEvent (Events event){
-    }
+
 
     public class EventViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.itemImageView) ImageView mOutAndAboutImageView;

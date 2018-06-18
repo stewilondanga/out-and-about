@@ -44,8 +44,8 @@ public class MeetupService {
         call.enqueue(callback);
     }
 
-    public static List<Events> processResults(Response response) {
-        List<Events> events = new ArrayList<>();
+    public static ArrayList<Events> processResults(Response response) {
+        ArrayList<Events> events = new ArrayList<>();
 
             try {
                 String jsonData = response.body().string();

@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 
 import butterknife.BindView;
@@ -26,10 +24,10 @@ import okhttp3.Response;
 
 public class EventListActivity extends AppCompatActivity {
     public static final String TAG = EventListActivity.class.getSimpleName();
-    @BindView(R.id.recyclerView) ListView mRecyclerView;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private OutAndAboutListAdapter mAdapter;
 
-    private List<Events> mEvents = new ArrayList<Events>();
+    private ArrayList<Events> mEvents = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -48,6 +46,7 @@ public class EventListActivity extends AppCompatActivity {
         meetupService.findEvents(event, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+
                 e.printStackTrace();
             }
 
@@ -58,7 +57,7 @@ public class EventListActivity extends AppCompatActivity {
                 EventListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mAdapter = new OutAndAboutListAdapter(getApplicationContext(), events);
+                        mAdapter = new OutAndAboutListAdapter(getApplicationContext(), mEvents);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(EventListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
