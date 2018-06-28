@@ -10,4 +10,5 @@ public class Constants {
     public static final String API_QUERY_PARAMETER = "event_list_item";
     public static final String LATITUDE_QUERY_PARAMETER = "lat";
     public static final String LONGITUDE_QUERY_PARAMETER = "lon";
+    public static final String FIREBASE_CHILD_SEARCHED_LISTITEM = "searchedListitem";
 }
