@@ -24,8 +24,8 @@ import io.github.stewilondanga.outandabout.Constants;
 import io.github.stewilondanga.outandabout.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
+    //private SharedPreferences mSharedPreferences;
+    //private SharedPreferences.Editor mEditor;
 
     @BindView(R.id.mainbutton1) Button mFindExploreButton;
     @BindView(R.id.mainbutton2) Button mFindAboutButton;
@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Typeface CaviarDreams = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
         mMainTextView.setTypeface(CaviarDreams);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mSharedPreferences.edit();
+        //mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //mEditor = mSharedPreferences.edit();
 
         //Getting LocationManager object
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -69,9 +69,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 if (v == mFindExploreButton){
                     String event = mEventsEditText.getText().toString();
-                    if (!(event).equals("")){
-                        addToSharedPreferences(event);
-                    }
+                    //if (!(event).equals("")){
+                    //    addToSharedPreferences(event);
+                    //}
                     Intent intent = new Intent(MainActivity.this, EventListActivity.class);
                     startActivity(intent);
                 }
@@ -79,7 +79,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //String longitude =mLongitudeEditText .getText().toString();
                 //intent.putExtra("latitude", latitude);
                 //intent.putExtra("longitude", longitude);
-
+            public void saveListitemToFirebase(String event) {
+                    mSearchedEventListitemReference.setValue(event);
+            }
 
             }
         });
