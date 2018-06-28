@@ -43,13 +43,25 @@
         android:text="About"/>
 
     <EditText
-        android:layout_width="205dp"
+        android:id="@+id/LatitudeEditText"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:textColor="@color/accent"
+        android:layout_alignEnd="@+id/mainTextView"
+        android:layout_alignRight="@+id/mainTextView"
+        android:layout_below="@+id/mainTextView"
         android:background="@color/primary_light"
-        android:layout_above="@id/mainbutton1"
-        android:hint="Explore"
-        android:id="@+id/locationEditText"/>
+        android:hint="Latitude"
+        android:textColor="@color/accent" />
+
+    <EditText
+        android:id="@+id/LongitudeEditText"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mainTextView"
+        android:layout_alignStart="@+id/mainTextView"
+        android:layout_below="@+id/mainTextView"
+        android:background="@color/primary_light"
+        android:hint="Longitude"
+        android:textColor="@color/accent" />
 
 </RelativeLayout>

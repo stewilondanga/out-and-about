@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.stewilondanga.outandabout.R;
 import io.github.stewilondanga.outandabout.adapters.OutAndAboutListAdapter;
-import io.github.stewilondanga.outandabout.models.Events;
+import io.github.stewilondanga.outandabout.models.Event;
 import io.github.stewilondanga.outandabout.services.MeetupService;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -27,7 +27,7 @@ public class EventListActivity extends AppCompatActivity {
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private OutAndAboutListAdapter mAdapter;
 
-    private ArrayList<Events> mEvents = new ArrayList<>();
+    private ArrayList<Event> mEvents = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -36,14 +36,15 @@ public class EventListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        String event = intent.getStringExtra("event_list_item");
+        String lat = intent.getStringExtra("latitude");
+        String lon = intent.getStringExtra("longitude");
 
-        getListItem(event);
+        getListItem(lat, lon);
     }
 
-    private void getListItem(String event) {
+    private void getListItem(String lat, String lon) {
         final MeetupService meetupService =new MeetupService();
-        meetupService.findEvents(event, new Callback() {
+        meetupService.findEvents(lat, lon, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
 

@@ -16,18 +16,18 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.stewilondanga.outandabout.R;
-import io.github.stewilondanga.outandabout.models.City;
-import io.github.stewilondanga.outandabout.models.Events;
+import io.github.stewilondanga.outandabout.models.Group;
+import io.github.stewilondanga.outandabout.models.Event;
 
 /**
  * Created by stewart on 6/17/18.
  */
 
 public class OutAndAboutListAdapter extends RecyclerView.Adapter<OutAndAboutListAdapter.EventViewHolder> {
-    private List<Events> mEvents = new ArrayList<>();
+    private List<Event> mEvents = new ArrayList<>();
     private Context mContext;
 
-    public OutAndAboutListAdapter(Context context, ArrayList<Events> events){
+    public OutAndAboutListAdapter(Context context, ArrayList<Event> events){
         mContext = context;
         mEvents = events;
     }
@@ -61,8 +61,8 @@ public class OutAndAboutListAdapter extends RecyclerView.Adapter<OutAndAboutList
                 mContext = itemView.getContext();
             }
 
-            public void bindEvents(Events event) {
-                mCategoryTextView.setText(event.getCity().describeContents());
+            public void bindEvents(Event event) {
+                mCategoryTextView.setText(event.getLocalDate());
             }
     }
 }
