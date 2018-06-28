@@ -2,11 +2,13 @@ package io.github.stewilondanga.outandabout.ui;
 
 import android.content.Context;
 import android.content.Intent;
-    import android.graphics.Typeface;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,9 +20,13 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.stewilondanga.outandabout.Constants;
 import io.github.stewilondanga.outandabout.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+
     @BindView(R.id.mainbutton1) Button mFindExploreButton;
     @BindView(R.id.mainbutton2) Button mFindAboutButton;
     @BindView(R.id.LatitudeEditText) EditText mLatitudeEditText;
@@ -35,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
         Typeface CaviarDreams = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
         mMainTextView.setTypeface(CaviarDreams);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
 
         //Getting LocationManager object
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -58,15 +67,24 @@ public class MainActivity extends AppCompatActivity {
         mFindExploreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (v == mFindExploreButton){
+                    String event = mEventsEditText.getText().toString();
+                    if (!(event).equals("")){
+                        addToSharedPreferences(event);
+                    }
+                    Intent intent = new Intent(MainActivity.this, EventListActivity.class);
+                    startActivity(intent);
+                }
                 //String latitude = mLatitudeEditText.getText().toString();
                 //String longitude =mLongitudeEditText .getText().toString();
                 //intent.putExtra("latitude", latitude);
                 //intent.putExtra("longitude", longitude);
-                //startActivity(intent);
-                //Intent intent = new Intent(MainActivity.this, EventListActivity.class);
+
 
             }
         });
+
+    }
 
         mFindAboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+    private void addToSharedPreferences(String listitem){
+        mEditor.putString(Constants.PREFERENCES_LISTITEM_KEY, listitem).apply();
 
     }
 
